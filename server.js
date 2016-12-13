@@ -1,20 +1,17 @@
 var express = require('express');
 var app = express();
 
-/**
- * Setting up firebase
- */
 
-var admin = require("firebase-admin");
+/** TODO : remove this 
+var ref = admin.database().ref('players/test');
 
-var serviceAccount = require("./toxoteamKey.json");
-
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://toxoteamdb.firebaseio.com/"
-});
-
-//console.log(admin.database().ref('/toxoteamdb/players'));
+ref.once("value")
+  .then(function(snapshot){
+    var score  = snapshot.child("score").val();
+    console.log("Cosas en firebase")
+    console.log(score);
+  });
+*/
 
 /**
  * All URI and requests

@@ -1,6 +1,11 @@
 var express = require('express');
 var fs = require("fs");
-//var db = require("../../server.js");
+
+/**
+ * Getting database reference
+ */
+var database = require("../../database.js");
+var db = database.database;
 
 /**
  * Using router to route all uris
@@ -17,10 +22,19 @@ router.use(function timeLog (req, res, next) {
  */
 
 router.get('/', function (req, res) {
-    fs.readFile( __dirname + "/" + "users.json", 'utf8', function (err, data) {
-        //console.log(db.ref('players'));
+    /** TODO : remove this
+     * fs.readFile( __dirname + "/" + "users.json", 'utf8', function (err, data) {
         console.log( data );
         res.end( data );
+    });*/
+
+    var ref = db.ref('players');
+
+    ref.once("value")
+        .then(function(snapshot){
+            var data  = snapshot.child("/").val();
+            console.log(data);
+            res.end(JSON.stringify(data));
     });
 });
 
