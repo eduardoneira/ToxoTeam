@@ -7,7 +7,8 @@ before_script:
   - npm install
 
 script:
-  - npm start
+  - npm start &
+  - npm stop
 
 notifications:
   email: false
