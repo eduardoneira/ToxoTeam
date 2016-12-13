@@ -1,5 +1,4 @@
 var express = require('express');
-var fs = require("fs");
 
 /**
  * Getting database reference
@@ -24,6 +23,7 @@ router.use(function timeLog (req, res, next) {
  * Requests handlers
  */
 
+// Get all players
 router.get('/', function (req, res) {
     var ref = db.ref('players');
 
@@ -35,6 +35,7 @@ router.get('/', function (req, res) {
     });
 });
 
+//Get a single player
 router.get('/:player', function(req,res) {    
     var ref = db.ref('players/'+req.params.player);
 
