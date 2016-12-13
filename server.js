@@ -1,6 +1,8 @@
 var express = require('express');
 var app = express();
 
+process.title = "toxoteam";
+
 /**
  * All URI and requests
  */
@@ -20,8 +22,8 @@ app.use('/players',players);
 var ip = "127.0.0.1";
 var port = 16081;
 
-if (parseInt(process.argv[1]) < 65536){
-  port = parseInt(process.argv[1]);
+if (parseInt(process.argv[2]) < 65536){
+  port = parseInt(process.argv[2]);
 }
 
 var server = app.listen(port,ip,function () {
@@ -29,7 +31,6 @@ var server = app.listen(port,ip,function () {
   var host = server.address().address
   var port = server.address().port
 
-  console.log("Example app listening at http://%s:%s", host, port)
+  console.log(" Toxoteam listening at http://%s:%s", host, port);
 
 });
-

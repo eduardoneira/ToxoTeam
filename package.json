@@ -1,9 +1,10 @@
 {
   "name": "toxoteam",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "private": true,
   "scripts": {
-    "start": "node ./server.js"
+    "start": "node ./server.js",
+    "stop": "pkill --signal SIGINT toxoteam"
   },
   "dependencies": {
     "body-parser": "~1.13.2",

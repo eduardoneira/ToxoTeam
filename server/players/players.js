@@ -9,6 +9,7 @@ var db = database.database;
 
 /**
  * Using router to route all uris
+ * Logging time of callback
  */
 var router = express.Router();
 
