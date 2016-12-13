@@ -1,18 +1,6 @@
 var express = require('express');
 var app = express();
 
-
-/** TODO : remove this 
-var ref = admin.database().ref('players/test');
-
-ref.once("value")
-  .then(function(snapshot){
-    var score  = snapshot.child("score").val();
-    console.log("Cosas en firebase")
-    console.log(score);
-  });
-*/
-
 /**
  * All URI and requests
  */
@@ -20,18 +8,23 @@ var users  = require('./server/users/users.js');
 
 app.use('/users',users);
 
+var players = require('./server/players/players.js');
+
+app.use('/players',players);
+
 /**
- * Server ip config and deploy
+ * Server port config and deploy
  */
 
-var regexIP = /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/gm;
+//var regexIP = /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/gm;
 var ip = "127.0.0.1";
+var port = 16081;
 
-if (regexIP.test(process.argv[1])) {
-    ip = process.argv[1];
+if (parseInt(process.argv[1]) < 65536){
+  port = parseInt(process.argv[1]);
 }
 
-var server = app.listen(16081,ip,function () {
+var server = app.listen(port,ip,function () {
 
   var host = server.address().address
   var port = server.address().port

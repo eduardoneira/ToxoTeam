@@ -24,13 +24,18 @@ router.use(function timeLog (req, res, next) {
  */
 
 router.get('/', function (req, res) {
-    /** TODO : remove this
-     * fs.readFile( __dirname + "/" + "users.json", 'utf8', function (err, data) {
-        console.log( data );
-        res.end( data );
-    });*/
-
     var ref = db.ref('players');
+
+    ref.once("value")
+        .then(function(snapshot){
+            var data  = snapshot.child("/").val();
+            console.log(data);
+            res.end(JSON.stringify(data));
+    });
+});
+
+router.get('/:player', function(req,res) {    
+    var ref = db.ref('players/'+req.params.player);
 
     ref.once("value")
         .then(function(snapshot){
