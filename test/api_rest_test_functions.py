@@ -1,5 +1,6 @@
 import requests
 import json
+import sys
 
 data = ""
 
@@ -13,28 +14,28 @@ else:
 
 def create_player(player,score,team):
 	data = json.dumps({'player':player, 'score': score, 'team': team})
-	r = requests.post(ip+"/players", data=data)
+	r = requests.post(ip+"/players", data=data, headers={'Content-Type' : 'application/json'})
 	if verbose:
-		print "POST", r.url, data
-		print "content:", r.content
-		print
+		print("POST", r.url, data) 
+		print("content:", r.content)
+		print()
 	else:
 		return r
 
 def get_all_players():
 	r = requests.get(ip+"/players")
 	if verbose:
-		print "GET", r.url, data
-		print "content:", r.content
-		print
+		print("GET", r.url, data) 
+		print("content:", r.content) 
+		print()
 	else:
 		return r
 
 def get_player(player):
     r = requests.get(ip+"/players/"+player)
-	if verbose:
-		print "GET", r.url, data
-		print "content:", r.content
-		print
-	else:
-		return r
+    if verbose:
+	    print("GET", r.url, data)
+	    print("content:", r.content)
+	    print()
+    else:
+	    return r

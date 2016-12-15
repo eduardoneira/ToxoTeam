@@ -1,3 +1,4 @@
 from api_rest_test_functions import *
-import unittest
+
+create_player("Rodrigo","70","Boca")
 

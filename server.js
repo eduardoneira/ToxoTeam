@@ -4,6 +4,16 @@ var app = express();
 process.title = "toxoteam";
 
 /**
+ * App configure
+ */
+
+var bodyParser = require('body-parser');
+
+app.use(bodyParser.json());
+
+app.use(bodyParser.urlencoded({ extended: false }));
+
+/**
  * All URI and requests
  */
 var users  = require('./server/users/users.js');
@@ -13,14 +23,6 @@ app.use('/users',users);
 var players = require('./server/players/players.js');
 
 app.use('/players',players);
-
-//BodyParser for POST
-var bodyParser = require('body-parser');
-
-app.use(bodyParser.urlencoded({ extended: false }));
-
-// parse application/json
-app.use(bodyParser.json())
 
 /**
  * Server port config and deploy
