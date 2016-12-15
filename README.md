@@ -1,5 +1,4 @@
 # ToxoTeam
-https://travis-ci.org/eduardoneira/ToxoTeam.svg?branch=firebase
 Repositorio para ToxoTeam usando Node, Angular 2, Express y Firebase
 
 # Instalación

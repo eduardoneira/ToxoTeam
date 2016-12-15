@@ -14,10 +14,17 @@ var players = require('./server/players/players.js');
 
 app.use('/players',players);
 
+//BodyParser for POST
+var bodyParser = require('body-parser');
+
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// parse application/json
+app.use(bodyParser.json())
+
 /**
  * Server port config and deploy
  */
-
 //var regexIP = /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/gm;
 var ip = "127.0.0.1";
 var port = 16081;

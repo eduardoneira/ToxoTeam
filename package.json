@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./server.js",
-    "stop": "pkill -INT toxoteam"
+    "stop": "pkill -SIGINT toxoteam"
   },
   "dependencies": {
     "body-parser": "~1.13.2",

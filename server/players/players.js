@@ -15,7 +15,7 @@ var router = express.Router();
 router.use(function timeLog (req, res, next) {
     var path = require('path')
     var scriptName = path.basename(__filename)
-    console.log('Time callback of',scriptName,': ', Date.now())
+    console.log('Time callback of',scriptName,' with url ',req.url,': ', Date.now())
     next()
 });
 
@@ -35,6 +35,27 @@ router.get('/', function (req, res) {
     });
 });
 
+router.post('/', function (req, res) {
+   /** var postData = {
+        score : req.body.score,
+        team : req.body.team
+    };*/
+
+    console.log(req.body);
+    var postData = {
+        score : req.body.score,
+        team : req.body.team
+    };
+
+    var updates = {};
+    updates['/players/'+req.body.player] = postData;
+
+    console.log(updates);
+
+    db.ref('/').update(updates);
+    res.end('SUCCESS');
+});
+
 //Get a single player
 router.get('/:player', function(req,res) {    
     var ref = db.ref('players/'+req.params.player);
@@ -46,6 +67,8 @@ router.get('/:player', function(req,res) {
             res.end(JSON.stringify(data));
     });
 });
+
+
 
 /**
  * Export of router used
