@@ -6,3 +6,6 @@ node_modules/
 
 #python cache
 __pycache__
+
+#keys
+config.json
