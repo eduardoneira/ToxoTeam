@@ -1,5 +1,5 @@
 # ToxoTeam
-Repositorio para ToxoTeam usando Node, Angular 2, Express y Firebase
+Repositorio para ToxoTeam Server usando Node, Express y Firebase
 
 # Instalación
 

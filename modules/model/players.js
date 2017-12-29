@@ -3,7 +3,7 @@ var express = require('express');
 /**
  * Getting database reference
  */
-var database = require("../../database.js");
+var database = require("../database/database.js");
 var db = database.database;
 
 /**
@@ -68,9 +68,4 @@ router.get('/:player', function(req,res) {
     });
 });
 
-
-
-/**
- * Export of router used
- */
 module.exports = router;

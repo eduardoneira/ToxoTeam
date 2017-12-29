@@ -4,11 +4,10 @@ var fs = require("fs");
 /**
  * Getting database reference
  */
-var database = require("../../database.js");
-var db = database.database;
+var db = require("../database.js").database;
 
 /**
- * Using router to route all uris
+ * Using router to route all uris while logging
  */
 var router = express.Router();
 
@@ -22,14 +21,7 @@ router.use(function timeLog (req, res, next) {
 /**
  * Requests handlers
  */
-
 router.get('/', function (req, res) {
-    /** TODO : remove this
-     * fs.readFile( __dirname + "/" + "users.json", 'utf8', function (err, data) {
-        console.log( data );
-        res.end( data );
-    });*/
-
     var ref = db.ref('players');
 
     ref.once("value")

@@ -1,7 +1,6 @@
 /**
  * Setting up firebase
  */
-
 var admin = require("firebase-admin");
 
 var serviceAccount = require("./toxoteamKey.json");
