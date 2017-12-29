@@ -1,10 +1,12 @@
-# ToxoTeam
-Repositorio para ToxoTeam Server usando Node, Express y Firebase
+[![Build Status](https://travis-ci.org/eduardoneira/ToxoTeamServer.svg?branch=master)](https://travis-ci.org/eduardoneira/ToxoTeamServer)
+
+# ToxoTeam Server
+Repositorio para el server del Toxoteam usando Node, Express y Firebase
 
 # Instalación
 
 ```bash
-$ git clone https://github.com/eduardoneira/ToxoTeam.git
+$ git clone https://github.com/eduardoneira/ToxoTeamServer.git
 $ npm install
 $ npm start
 ```
