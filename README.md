@@ -7,6 +7,7 @@ Repositorio para el server del Toxoteam usando Node, Express y Firebase
 
 ```bash
 $ git clone https://github.com/eduardoneira/ToxoTeamServer.git
+$ gpg modules/database/config.json.gpg
 $ npm install
 $ npm start
 ```
