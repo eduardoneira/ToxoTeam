@@ -13,10 +13,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 /**
  * URIs
  */
-var users  = require('./modules/users/users.js');
+var users  = require('./modules/model/user.js');
 app.use('/users',users);
 
-var players = require('./modules/players/players.js');
+var players = require('./modules/model/player.js');
 app.use('/players',players);
 
 /**
@@ -30,10 +30,8 @@ if (parseInt(process.argv[2]) < 65536){
 }
 
 var server = app.listen(port,ip,function () {
-
   var host = server.address().address
   var port = server.address().port
 
   console.log("Toxoteam listening at http://%s:%s", host, port);
-
 });

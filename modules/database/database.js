@@ -1,9 +1,8 @@
 /**
- * Setting up firebase
+ * Setting up firebase admin
  */
 var admin = require("firebase-admin");
-
-var serviceAccount = require("./toxoteamKey.json");
+var serviceAccount = require("./config.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),

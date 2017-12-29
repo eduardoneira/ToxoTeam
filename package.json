@@ -1,9 +1,9 @@
 {
   "name": "toxoteam",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "private": true,
   "scripts": {
-    "start": "node ./server.js",
+    "start": "node ./app.js",
     "stop": "pkill -KILL toxoteam"
   },
   "dependencies": {
