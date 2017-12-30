@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+var argv = require('named-argv');
 
 process.title = "Toxoteam";
 
@@ -13,25 +14,22 @@ app.use(bodyParser.urlencoded({ extended: false }));
 /**
  * URIs
  */
-var users  = require('./modules/model/user.js');
-app.use('/users',users);
-
-var players = require('./modules/model/player.js');
-app.use('/players',players);
+var players = require('./modules/player/player.js');
+app.use('/player', players);
 
 /**
  * Server port config and deploy
  */
-var ip = "127.0.0.1";
-var port = 16000;
+var ip = (ip in argv.opts) ? argv.opts.ip : "127.0.0.1";
+var port = (port in argv.opts) ? argv.opts.port : 23000;
 
-if (parseInt(process.argv[2]) < 65536){
-  port = parseInt(process.argv[2]);
-}
+var env = (env in argv.opts) ? argv.opts.env : 'dev';
+var settings = require('./modules/base/settings.js');
+settings.env = env;
 
-var server = app.listen(port,ip,function () {
+var server = app.listen(port, ip, function () {
   var host = server.address().address
   var port = server.address().port
 
-  console.log("Toxoteam listening at http://%s:%s", host, port);
+  console.log("Toxoteam Server listening at http://%s:%s", host, port);
 });
