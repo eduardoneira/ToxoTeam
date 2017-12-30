@@ -8,7 +8,7 @@ function FirebaseDatabase() {
 
   admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
-    databaseURL: "https://toxoteamdb.firebaseio.com/"
+    databaseURL: "https://toxoteamdb-4120d.firebaseio.com/"
   });
   
   var rootPath = settings.env;
@@ -32,7 +32,7 @@ function FirebaseDatabase() {
       console.log(data);
     }
 
-    this.db.ref(rootPath+'/'+path).set(data);
+    this.db.ref(rootPath).child(path).push().set(data);
   }
 }
 

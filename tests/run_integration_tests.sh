@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cd ..
-npm start --env='test' --verbose='false' &
+npm test &
 cd tests
 
 python -m unittest discover -s './integration/'

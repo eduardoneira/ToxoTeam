@@ -7,13 +7,9 @@ var argv = require('named-argv');
  */
 var ip = ('ip' in argv.opts) ? argv.opts.ip : "127.0.0.1";
 var port = ('port' in argv.opts) ? argv.opts.port : 23000;
-
 var settings = require('./modules/base/settings.js');
 settings.env = ('env' in argv.opts) ? argv.opts.env : 'dev';
-
-if ('verbose' in argv.opts) {
-  settings.verbose = (argv.opts.verbose == true)
-}
+settings.verbose = ('verbose' in argv.opts) ? (argv.opts.verbose == true) : false;
 
 /**
  * App configure

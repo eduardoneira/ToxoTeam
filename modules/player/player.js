@@ -29,11 +29,13 @@ function addPlayer(req, res) {
   var player_score = req.body.score;
   
   if (!player_name || (player_score < 0 && player_score > 10)) {
-    // Throw minimun required data exception
+    res.status(422).end('Must specify player name and a score between 0 and 10.');
+    return;
   }
 
   if (db.get('players/'+player_name)) {
-    // Throw name used exception
+    res.status(422).end('Username already exists.')
+    return;
   }
 
   var img_name = crypto.createHash('sha256').update(req.body.img).digest('hex').toString('hex');
@@ -41,14 +43,14 @@ function addPlayer(req, res) {
 
   file_manager.save_image(img_name, buffer);
 
-  var updates = {};
-  updates[player_name] = {
+  var updates = {
+    name: player_name,
     score : player_score,
     team : req.body.team,
     img: img_name
   };
 
-  db.post('players/', updates);
+  db.post('players', updates);
   res.end('SUCCESS');
 }
 

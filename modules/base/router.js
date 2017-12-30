@@ -1,11 +1,13 @@
-function Router(verbose=true) {
+function Router() {
   this.express_router = require('express').Router();
+
+  var settings = require("./settings.js");
   
-  if (verbose) {
+  if (settings.verbose) {
     this.express_router.use(function timeLog (req, res, next) {
       var path = require('path');
       var scriptName = path.basename(__filename);
-      console.log('Time callback of',scriptName,' with url: ',req.url,' -> ', Date.now());
+      console.log('Time callback of',scriptName,' with url: ',req.originalUrl,' -> ', Date.now());
       next();
     });
   }
