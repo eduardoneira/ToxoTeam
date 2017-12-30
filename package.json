@@ -1,10 +1,11 @@
 {
   "name": "toxoteam",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "start": "node ./app.js",
-    "stop": "pkill -KILL toxoteam"
+    "test": "node ./app.js --env=test --verbose=false",
+    "stop": "killall -SIGINT node"
   },
   "dependencies": {
     "body-parser": "~1.13.2",

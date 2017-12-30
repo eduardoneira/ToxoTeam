@@ -1,17 +1,18 @@
 /**
  * Setting up firebase admin
  */
-function FirebaseDatabase(env='test', verbose=true) {
+function FirebaseDatabase() {
   var admin = require("firebase-admin");
   var settings = require("./settings.js");
   var serviceAccount = settings.db;
-  debugger;
+
   admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
     databaseURL: "https://toxoteamdb.firebaseio.com/"
   });
   
   var rootPath = settings.env;
+  var verbose = settings.verbose;
   this.db = admin.database();
 
   this.get = function(path) {
@@ -31,8 +32,7 @@ function FirebaseDatabase(env='test', verbose=true) {
       console.log(data);
     }
 
-    var ref = db.ref(rootPath+'/'+path);
-    ref.update(data);
+    this.db.ref(rootPath+'/'+path).set(data);
   }
 }
 
